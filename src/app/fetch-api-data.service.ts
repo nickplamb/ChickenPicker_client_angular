@@ -4,7 +4,7 @@ import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
-const apiUrl = 'https://chickens-api.herokuapp.com/';
+const apiUrl = 'https://chickens-api.herokuapp.com';
 
 @Injectable({
   providedIn: 'root'
@@ -18,20 +18,20 @@ export class FetchApiDataService {
   // Making api call for the user registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
-    return this.http.post(`${apiUrl}users`, userDetails).pipe(
+    return this.http.post(`${apiUrl}/users`, userDetails).pipe(
       catchError(this.handleError)
     );
   }
 
   public userLogin(userCredentials: any): Observable<any> {
-    return this.http.post(`${apiUrl}login`, userCredentials).pipe(
+    return this.http.post(`${apiUrl}/login`, userCredentials).pipe(
       catchError(this.handleError)
     );
   }
 
   public updateUserInfo(userDetails: any): Observable<any>{
     const token = localStorage.getItem('token');
-    return this.http.put(`${apiUrl}users`, userDetails, {headers: new HttpHeaders({
+    return this.http.put(`${apiUrl}/users`, userDetails, {headers: new HttpHeaders({
       Authorization: `Bearer ${token}`
     })}).pipe(
       map<any, any>(this.extractResponseData),
@@ -41,7 +41,7 @@ export class FetchApiDataService {
 
   public deleteUserAccount(): Observable<any>{
     const token = localStorage.getItem('token');
-    return this.http.delete(`${apiUrl}users`, {headers: new HttpHeaders({
+    return this.http.delete(`${apiUrl}/users`, {headers: new HttpHeaders({
       Authorization: `Bearer ${token}`
     })}).pipe(
       catchError(this.handleError)
@@ -50,7 +50,7 @@ export class FetchApiDataService {
 
   public getUserFavorites(): Observable<any>{
     const token = localStorage.getItem('token');
-    return this.http.get(`${apiUrl}users/favorites`, {headers: new HttpHeaders({
+    return this.http.get(`${apiUrl}/users/favorites`, {headers: new HttpHeaders({
       Authorization: `Bearer ${token}`
     })}).pipe(
       map<any, any>(this.extractResponseData),
@@ -60,7 +60,7 @@ export class FetchApiDataService {
 
   public addToUserFavorites(breedId: string): Observable<any>{
     const token = localStorage.getItem('token');
-    return this.http.post(`${apiUrl}users/favorites/${breedId}`, {headers: new HttpHeaders({
+    return this.http.post(`${apiUrl}/users/favorites/${breedId}`, {headers: new HttpHeaders({
       Authorization: `Bearer ${token}`
     })}).pipe(
       map<any, any>(this.extractResponseData),
@@ -70,7 +70,7 @@ export class FetchApiDataService {
 
   public removeFromUserFavorites(breedId: string): Observable<any>{
     const token = localStorage.getItem('token');
-    return this.http.delete(`${apiUrl}users/favorites/${breedId}`, {headers: new HttpHeaders({
+    return this.http.delete(`${apiUrl}/users/favorites/${breedId}`, {headers: new HttpHeaders({
       Authorization: `Bearer ${token}`
     })}).pipe(
       map<any, any>(this.extractResponseData),
@@ -80,7 +80,7 @@ export class FetchApiDataService {
 
   public getAllBreeds(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(`${apiUrl}breeds`, {headers: new HttpHeaders({
+    return this.http.get(`${apiUrl}/breeds`, {headers: new HttpHeaders({
       Authorization: `Bearer ${token}`
     })}).pipe(
       map<any, any>(this.extractResponseData),
@@ -90,7 +90,7 @@ export class FetchApiDataService {
 
   public getSingleBreed(breed: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(`${apiUrl}breeds/${breed}`, {headers: new HttpHeaders({
+    return this.http.get(`${apiUrl}/breeds/${breed}`, {headers: new HttpHeaders({
       Authorization: `Bearer ${token}`
     })}).pipe(
       map<any, any>(this.extractResponseData),
@@ -100,7 +100,7 @@ export class FetchApiDataService {
 
   public getBreedsByEggColor(color: string): Observable<any>{
     const token = localStorage.getItem('token');
-    return this.http.get(`${apiUrl}eggs/${color}`, {headers: new HttpHeaders({
+    return this.http.get(`${apiUrl}/eggs/${color}`, {headers: new HttpHeaders({
       Authorization: `Bearer ${token}`
     })}).pipe(
       map<any, any>(this.extractResponseData),
@@ -110,7 +110,7 @@ export class FetchApiDataService {
 
   public getBreedsByApaClass(apaClass: string): Observable<any>{
     const token = localStorage.getItem('token');
-    return this.http.get(`${apiUrl}class/${apaClass}`, {headers: new HttpHeaders({
+    return this.http.get(`${apiUrl}/class/${apaClass}`, {headers: new HttpHeaders({
       Authorization: `Bearer ${token}`
     })}).pipe(
       map<any, any>(this.extractResponseData),
@@ -126,6 +126,7 @@ export class FetchApiDataService {
   }
 
   private handleError(error: HttpErrorResponse): any {
+    console.log(error)
     if(error.error instanceof ErrorEvent) {
       console.error('Some error occurred: ', error.error.message);
     } else {
