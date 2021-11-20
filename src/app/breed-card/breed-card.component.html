@@ -1,1 +1,7 @@
-<p>breed-card works!</p>
+<mat-card *ngFor="let breed of breeds; let i=index;">
+  <mat-dialog-content>
+    <mat-card-title>{{ breed.breed }}</mat-card-title>
+    <mat-card-subtitle><img src={{breed.imgUrl}} onError="this.src='../../assets/breed_photos/frankie2.jpeg'" width="400px" alt="">
+    </mat-card-subtitle>
+  </mat-dialog-content>
+</mat-card>
