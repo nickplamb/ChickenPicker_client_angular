@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -20,6 +21,12 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
 import { BreedCardComponent } from './breed-card/breed-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component'
 
+const appRoutes: Routes = [
+  { path: 'welcome', component: WelcomePageComponent },
+  { path: 'breeds', component: BreedCardComponent },
+  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +38,7 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule.forRoot(appRoutes),
     HttpClientModule,
     BrowserAnimationsModule,
     MatInputModule,
