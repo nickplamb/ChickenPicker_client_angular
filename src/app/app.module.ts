@@ -15,12 +15,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
 
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { BreedCardComponent } from './breed-card/breed-card.component';
-import { WelcomePageComponent } from './welcome-page/welcome-page.component'
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { NavbarComponent } from './layout/navbar/navbar.component'
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -34,7 +37,8 @@ const appRoutes: Routes = [
     UserRegistrationFormComponent,
     UserLoginFormComponent,
     BreedCardComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +53,8 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatSnackBarModule,
     MatIconModule,
+    MatToolbarModule,
+    MatMenuModule,
     FormsModule,
   ],
   providers: [],
