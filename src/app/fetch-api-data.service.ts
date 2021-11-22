@@ -28,6 +28,10 @@ export class FetchApiDataService {
     );
   }
 
+  public userLogout(): void {
+    localStorage.clear()
+  }
+
   public updateUserInfo(userDetails: any): Observable<any>{
     const token = localStorage.getItem('token');
     return this.http.put(`${apiUrl}/users`, userDetails, {headers: new HttpHeaders({

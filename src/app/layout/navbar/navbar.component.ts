@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { FetchApiDataService } from 'src/app/fetch-api-data.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public router: Router,
+    public fetchApiData: FetchApiDataService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  public logout(): void {
+    this.fetchApiData.userLogout();
+    this.router.navigate(['welcome']);
   }
 
 }
