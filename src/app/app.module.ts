@@ -23,7 +23,8 @@ import { UserRegistrationFormComponent } from './user-registration-form/user-reg
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { BreedCardComponent } from './breed-card/breed-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
-import { NavbarComponent } from './layout/navbar/navbar.component'
+import { NavbarComponent } from './layout/navbar/navbar.component';
+import { UserProfileComponent } from './user-profile/user-profile.component'
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     UserLoginFormComponent,
     BreedCardComponent,
     WelcomePageComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
