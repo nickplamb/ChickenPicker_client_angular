@@ -17,6 +17,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider'
 import { FormsModule } from '@angular/forms';
 
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
@@ -24,11 +25,13 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
 import { BreedCardComponent } from './breed-card/breed-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
-import { UserProfileComponent } from './user-profile/user-profile.component'
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AllBreedsComponent } from './all-breeds/all-breeds.component'
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
-  { path: 'breeds', component: BreedCardComponent },
+  { path: 'breeds', component: AllBreedsComponent },
+  { path: 'profile', component: UserProfileComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -40,7 +43,8 @@ const appRoutes: Routes = [
     BreedCardComponent,
     WelcomePageComponent,
     NavbarComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AllBreedsComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +61,7 @@ const appRoutes: Routes = [
     MatIconModule,
     MatToolbarModule,
     MatMenuModule,
+    MatDividerModule,
     FormsModule,
   ],
   providers: [],
