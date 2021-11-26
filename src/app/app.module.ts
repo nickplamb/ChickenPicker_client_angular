@@ -28,13 +28,6 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AllBreedsComponent } from './all-breeds/all-breeds.component'
 
-const appRoutes: Routes = [
-  { path: 'welcome', component: WelcomePageComponent },
-  { path: 'breeds', component: AllBreedsComponent },
-  { path: 'profile', component: UserProfileComponent },
-  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
-];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +42,6 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes),
     HttpClientModule,
     BrowserAnimationsModule,
     MatInputModule,
