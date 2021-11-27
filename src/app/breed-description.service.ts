@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 // new type for class descriptions object
+// https://stackoverflow.com/questions/57086672/element-implicitly-has-an-any-type-because-expression-of-type-string-cant-b
 type tClassDescription = {
   [key: string]: string
 }
@@ -39,5 +40,11 @@ export class BreedDescriptionService {
     return this.classDescriptions[apaClass];
   }
 
+  public addImageUrlToBreeds(breeds: any[]): any[] {
+    breeds.forEach((breed: any) => {
+      breed.imgUrl = `../../assets/breed_photos/${breed.breed.replace(/\s+/g, '').toLowerCase()}.jpg`;
+    });
+    return breeds;
+  }
 
 }
