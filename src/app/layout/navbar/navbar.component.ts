@@ -23,4 +23,12 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['welcome']);
   }
 
+  public goToProfile(): void {
+    this.router.navigate(['profile']);
+  }
+
+  public goHome():void {
+    this.router.navigate(['breeds']);
+  }
+
 }
