@@ -1,11 +1,11 @@
 .card-container {
   display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
 }
 
 .card-container_item {
   flex: 1 1 auto;
-}
-
-.inline {
-  display: inline;
+  max-width: 250px;
+  margin: 5px
 }

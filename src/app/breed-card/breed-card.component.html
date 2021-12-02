@@ -11,21 +11,24 @@
       <p *ngIf="breed.description"><b>Description:</b> {{breed.description}}</p>
       <div *ngIf="breed.purpose">
         <b>Purpose: </b>
-        <div *ngFor="let breedPurpose of convertBreedData.convertPurpose(breed.purpose); last as isLast" class="inline">
+        <span *ngFor="let breedPurpose of convertBreedData.convertPurpose(breed.purpose); last as isLast">
           <a href="/purpose/{{breedPurpose}}">{{breedPurpose}}</a>
-          <div *ngIf="!isLast" class="inline">, </div>
-        </div>
+          <span *ngIf="!isLast">, </span>
+        </span>
         <p></p>
       </div>
-      <div *ngIf="breed.apaClass">
-        <p>
-          <b>APA Class: </b><a href="/apaclass/{{breed.apaClass.name}}">{{breed.apaClass.name}}</a>
-        </p>
-      </div>
+      <p *ngIf="breed.apaClass">
+        <b>APA Class: </b><a href="/apaclass/{{breed.apaClass.name}}">{{breed.apaClass.name}}</a>
+      </p>
       <p><b>Egg Color: </b>{{breed.eggColor | titlecase}}</p>
     </mat-dialog-content>
     <mat-card-actions>
-      <mat-icon>favorite_border</mat-icon>
+      <button mat-icon-button (click)="addBreedToUserFavorites(breed)" aria-label="add this breed to your favorites">
+        <mat-icon>favorite_border</mat-icon>
+      </button>
+      <button mat-icon-button (click)="removeBreedFromUserFavorites(breed)" aria-label="add this breed to your favorites">
+        <mat-icon>favorite_border</mat-icon>
+      </button>
     </mat-card-actions>
   </mat-card>
 
