@@ -20,7 +20,6 @@ export class NavbarComponent implements OnInit {
 
   public logout(): void {
     this.fetchApiData.userLogout();
-    this.router.navigate(['welcome']);
   }
 
   public goToProfile(): void {

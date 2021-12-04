@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 const apiUrl = 'https://chickens-api.herokuapp.com';
 
@@ -13,7 +14,10 @@ const apiUrl = 'https://chickens-api.herokuapp.com';
 export class FetchApiDataService {
   //inject the HttpClient module to the constructor params
   //this will provide HttpClient to the entire class, making it available via this.http
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
   // Making api call for the user registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
@@ -30,6 +34,7 @@ export class FetchApiDataService {
 
   public userLogout(): void {
     localStorage.clear()
+    this.router.navigate(['welcome']);
   }
 
   public updateUserInfo(userDetails: any): Observable<any>{
