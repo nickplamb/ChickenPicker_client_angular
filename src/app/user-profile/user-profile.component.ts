@@ -62,6 +62,7 @@ export class UserProfileComponent implements OnInit {
         localStorage.setItem('username', response.username);
         localStorage.setItem('birthday', response.birthday);
 
+        this.userDataStore.updateUserData(response);
         this.userDataToUpdate = {};
         this.ngOnInit(); // refreshes the component
 
