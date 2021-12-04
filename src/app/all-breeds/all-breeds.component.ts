@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { BreedDescriptionService } from '../breed-description.service';
+import { UserDataStoreService } from '../user-data-store.service';
 
 @Component({
   selector: 'app-all-breeds',
@@ -13,17 +14,29 @@ export class AllBreedsComponent implements OnInit {
   breeds: any[] = [];
 
   constructor(
-    public fetchApiData: FetchApiDataService,
-    public breedDescriptionService: BreedDescriptionService
+    private fetchApiData: FetchApiDataService,
+    private breedDescriptionService: BreedDescriptionService,
+    private userDataStore: UserDataStoreService,
   ) { }
 
   ngOnInit(): void {
-    this.getBreeds();
+    this.getAllBreeds();
+    this.getUserFavorites();
   }
 
-  getBreeds(): void {
+  private getAllBreeds(): void {
     this.fetchApiData.getAllBreeds().subscribe((response: any) => {
       this.breeds = this.breedDescriptionService.addImageUrlToBreeds(response);
+    });
+  }
+
+  private getUserFavorites():void {
+    this.fetchApiData.getUserFavorites().subscribe({
+      next: response => {
+        this.userDataStore.updateUserFavorites(response);
+      }, error: response => {
+        console.error(response);
+      }
     });
   }
 
