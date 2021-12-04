@@ -23,11 +23,13 @@
       <p><b>Egg Color: </b>{{breed.eggColor | titlecase}}</p>
     </mat-dialog-content>
     <mat-card-actions>
-      <button mat-icon-button (click)="addBreedToUserFavorites(breed)" aria-label="add this breed to your favorites">
+      <button *ngIf="!userFavoriteBreeds.includes(breed._id)" mat-icon-button (click)="addBreedToUserFavorites(breed)"
+        aria-label="add this breed to your favorites">
         <mat-icon>favorite_border</mat-icon>
       </button>
-      <button mat-icon-button (click)="removeBreedFromUserFavorites(breed)" aria-label="add this breed to your favorites">
-        <mat-icon>favorite_border</mat-icon>
+      <button *ngIf="userFavoriteBreeds.includes(breed._id)" mat-icon-button (click)="removeBreedFromUserFavorites(breed)"
+        aria-label="remove this breed to your favorites">
+        <mat-icon>favorite</mat-icon>
       </button>
     </mat-card-actions>
   </mat-card>
