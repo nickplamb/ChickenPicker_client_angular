@@ -34,6 +34,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AllBreedsComponent } from './all-breeds/all-breeds.component'
 
 import { UserDataStoreService } from './user-data-store.service';
+import { UserDeleteAccountComponent } from './user-delete-account/user-delete-account.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { UserDataStoreService } from './user-data-store.service';
     WelcomePageComponent,
     NavbarComponent,
     UserProfileComponent,
-    AllBreedsComponent
+    AllBreedsComponent,
+    UserDeleteAccountComponent
   ],
   imports: [
     BrowserModule,
