@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, BehaviorSubject ,Subject } from 'rxjs';
+
+import { BreedDescriptionService } from './breed-description.service';
 import { tUserData } from './user-profile/user-profile.component';
 
 @Injectable({
@@ -8,17 +10,20 @@ import { tUserData } from './user-profile/user-profile.component';
 export class UserDataStoreService {
   //https://stackoverflow.com/questions/50067218/where-to-store-global-data-in-angular
 
-  userFavorites: Subject<any> = new Subject<any>();
-  userData:  Subject<any> = new Subject<any>();
+  // BehaviorSubject will return the current value, regular Subject triggers only on .next() call.
+  userFavorites: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  userData: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
-  constructor() { }
+  constructor(
+    private breedDescriptionService: BreedDescriptionService,
+  ) { }
 
-  updateUserFavorites(data: any[]): void {
-    this.userFavorites.next(data);
+  public updateUserFavorites(data: Object[]): void {
+    this.userFavorites.next(this.breedDescriptionService.addImageUrlToBreeds(data));
   }
 
-  updateUserData(data: tUserData): void {
-    this.userData.next(data);
+  public updateUserData(data: tUserData): void {
+      this.userData.next(data);
   }
 
 }
