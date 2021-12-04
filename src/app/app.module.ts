@@ -17,7 +17,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatDividerModule } from '@angular/material/divider'
+import { MatDividerModule } from '@angular/material/divider';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
@@ -27,6 +32,8 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AllBreedsComponent } from './all-breeds/all-breeds.component'
+
+import { UserDataStoreService } from './user-data-store.service';
 
 @NgModule({
   declarations: [
@@ -54,9 +61,16 @@ import { AllBreedsComponent } from './all-breeds/all-breeds.component'
     MatToolbarModule,
     MatMenuModule,
     MatDividerModule,
+    MatGridListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    UserDataStoreService,
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}},
+    {provide: MAT_DATE_LOCALE, useValue: 'en-US'},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

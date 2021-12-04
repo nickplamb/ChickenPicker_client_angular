@@ -1,3 +1,31 @@
-<div class="spacer"></div>
-<mat-divider></mat-divider>
+<div class="profile-form_container">
+  <h3>
+    Hello {{currentUserData.username}}, Edit Your Profile
+  </h3>
+  <form class="profile-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput [(ngModel)]="userDataToUpdate.username" type="text" placeholder="{{currentUserData.username}}" name="username">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="text" placeholder="{{currentUserData.email}}" name="email" disabled>
+      <mat-hint>Email cannot be changed</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput [(ngModel)]="userDataToUpdate.password" type="text" placeholder="password" name="password">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Birthday</mat-label>
+      <input matInput [matDatepicker]="datepicker" [value]="currentUserData.birthday" [(ngModel)]="userDataToUpdate.birthday">
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button type="button" (click)="updateUserProfile()" color="primary">Update Profile</button>
+  </form>
+</div>
+<div class="favorites-header">
+  <h3>Your Favorite Breeds</h3>
+</div>
 <app-breed-card [breedsToDisplay]="usersFavoriteBreeds"></app-breed-card>
