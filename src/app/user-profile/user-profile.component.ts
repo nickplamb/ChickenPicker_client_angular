@@ -1,14 +1,14 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDatepicker } from '@angular/material/datepicker';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-// import { MatDivider } from '@angular/material/divider';
+import { MatDialog } from '@angular/material/dialog';
 
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { BreedDescriptionService } from '../breed-description.service';
 import { UserDataStoreService } from '../user-data-store.service';
+
+import { UserDeleteAccountComponent } from '../user-delete-account/user-delete-account.component';
 
 export interface tUserData {
   [index: string]: any;
@@ -36,10 +36,9 @@ export class UserProfileComponent implements OnInit {
 
   constructor(
     private fetchApiData: FetchApiDataService,
-    private breedDescriptionService: BreedDescriptionService,
     private userDataStore: UserDataStoreService,
-    private router: Router,
     private snackbar: MatSnackBar,
+    private dialog: MatDialog,
   ) {
     this._subscription_UserFavoriteBreeds = this.userDataStore.userFavorites.subscribe(data => {
       this.usersFavoriteBreeds = data;
@@ -53,11 +52,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   public updateUserProfile(): void {
-    console.log('user data to update');
-    console.log(this.userDataToUpdate);
     this.fetchApiData.updateUserInfo(this.userDataToUpdate).subscribe({
       next: response => {
-        console.log(response)
         localStorage.setItem('email', response.email);
         localStorage.setItem('username', response.username);
         localStorage.setItem('birthday', response.birthday);
@@ -75,6 +71,12 @@ export class UserProfileComponent implements OnInit {
           duration: 2000
         });
       }
+    });
+  }
+
+  public deleteUserAccount(): void {
+    this.dialog.open(UserDeleteAccountComponent, {
+      width: '500px'
     });
   }
 }

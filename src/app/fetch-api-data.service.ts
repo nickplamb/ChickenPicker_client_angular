@@ -49,9 +49,12 @@ export class FetchApiDataService {
 
   public deleteUserAccount(): Observable<any>{
     const token = localStorage.getItem('token');
-    return this.http.delete(`${apiUrl}/users`, {headers: new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    })}).pipe(
+    return this.http.delete(`${apiUrl}/users`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`
+      }), 
+      responseType: 'text' //server responds with simple message stating that the account was deleted.
+    }).pipe(
       catchError(this.handleError)
     );
   }

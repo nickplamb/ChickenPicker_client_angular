@@ -4,10 +4,18 @@ mat-form-field {
 }
 
 .profile-form {
-  margin-left: 100px;
-  width: 300px;
+  // margin-left: 100px;
+  width: 400px;
 }
 
 .profile-form_container {
-margin-bottom: 20px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-form_button_container {
+  display: flex;
+  justify-content: space-around;
 }

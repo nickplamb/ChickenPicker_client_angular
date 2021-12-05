@@ -23,7 +23,10 @@
       <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
       <mat-datepicker #datepicker></mat-datepicker>
     </mat-form-field>
-    <button mat-raised-button type="button" (click)="updateUserProfile()" color="primary">Update Profile</button>
+    <div class="profile-form_button_container">
+      <button mat-raised-button type="button" (click)="updateUserProfile()" color="primary">Update Profile</button>
+      <button mat-raised-button type="button" (click)="deleteUserAccount()" color="warn">Delete Account</button>
+    </div>
   </form>
 </div>
 <div class="favorites-header">
