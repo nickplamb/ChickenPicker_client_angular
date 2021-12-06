@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { BreedDescriptionService } from '../breed-description.service';
 
 @Component({
   selector: 'app-breed-details-card',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BreedDetailsCardComponent implements OnInit {
 
-  constructor() { }
+  @Input() breed: any;
+
+  constructor(public convertBreedData: BreedDescriptionService) { }
 
   ngOnInit(): void {
   }
