@@ -11,7 +11,7 @@ import { BreedDescriptionService } from '../breed-description.service';
 export class BreedDetailsCardComponent implements OnInit {
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { breed: any },
+    @Inject(MAT_DIALOG_DATA) public breed: any,
     public convertBreedData: BreedDescriptionService
   ) { }
 

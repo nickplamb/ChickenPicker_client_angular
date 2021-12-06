@@ -40,7 +40,7 @@ export class BreedCardComponent implements OnInit {
   openBreedDetailsDialog(breed: any): void {
     this.dialog.open(BreedDetailsCardComponent, {
       width: '400px',
-      data: { breed: breed }
+      data: breed
     });
   }
 

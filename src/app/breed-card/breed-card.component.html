@@ -8,7 +8,7 @@
     </mat-card-header>
     <img src={{breed.imgUrl}} onError="this.src='../../assets/breed_photos/frankie2.jpeg'" width="250px" alt="An image of a {{breed.breed}} chicken">
     <mat-dialog-content>
-      <p *ngIf="breed.description"><b>Description:</b> {{breed.description}}</p>
+      <button mat-stroked-button (click)="openBreedDetailsDialog(breed)">More Details</button>
       <div *ngIf="breed.purpose">
         <b>Purpose: </b>
         <span *ngFor="let breedPurpose of convertBreedData.convertPurpose(breed.purpose); last as isLast">
@@ -20,7 +20,6 @@
       <p *ngIf="breed.apaClass">
         <b>APA Class: </b><a href="/apaclass/{{breed.apaClass.name}}">{{breed.apaClass.name}}</a>
       </p>
-      <p><b>Egg Color: </b>{{breed.eggColor | titlecase}}</p>
     </mat-dialog-content>
     <mat-card-actions>
       <button *ngIf="!userFavoriteBreeds.includes(breed._id)" mat-icon-button (click)="addBreedToUserFavorites(breed)"
