@@ -36,6 +36,7 @@ import { AllBreedsComponent } from './all-breeds/all-breeds.component'
 import { UserDataStoreService } from './user-data-store.service';
 import { UserDeleteAccountComponent } from './user-delete-account/user-delete-account.component';
 import { BreedDetailsCardComponent } from './breed-details-card/breed-details-card.component';
+import { FavoritesListToggleComponent } from './favorites-list-toggle/favorites-list-toggle.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { BreedDetailsCardComponent } from './breed-details-card/breed-details-ca
     UserProfileComponent,
     AllBreedsComponent,
     UserDeleteAccountComponent,
-    BreedDetailsCardComponent
+    BreedDetailsCardComponent,
+    FavoritesListToggleComponent
   ],
   imports: [
     BrowserModule,
