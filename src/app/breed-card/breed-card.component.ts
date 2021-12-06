@@ -40,16 +40,20 @@ export class BreedCardComponent implements OnInit {
   openBreedDetailsDialog(breed: any): void {
     this.dialog.open(BreedDetailsCardComponent, {
       width: '400px',
-      data: breed
+      data: {
+        breed: breed,
+        openBreedPurposeDialog: this.openBreedPurposeDetailsDialog,
+        openApaClassDialog: this.openApaClassDetailsDialog
+      }
     });
   }
 
-  openApaClassDetailsDialog(): void {
-
+  openApaClassDetailsDialog(apaClass: string): void {
+    console.log('apa class dialog' + apaClass);
   }
 
-  openBreedPurposeDetailsDialog(): void {
-
+  openBreedPurposeDetailsDialog(purpose: string): void {
+    console.log('purpose dialog' + purpose);
   }
 
   addBreedToUserFavorites(breed: any): void {

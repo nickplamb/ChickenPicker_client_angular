@@ -10,10 +10,19 @@ import { BreedDescriptionService } from '../breed-description.service';
 })
 export class BreedDetailsCardComponent implements OnInit {
 
+  breed: any;
+  openBreedPurposeDialog: Function;
+  openApaClassDialog: Function;
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) public breed: any,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public convertBreedData: BreedDescriptionService
-  ) { }
+  ) {
+    this.breed = data.breed;
+    this.openApaClassDialog = data.openApaClassDialog;
+    this.openBreedPurposeDialog = data.openBreedPurposeDialog;
+   }
+
 
   ngOnInit(): void {
   }
