@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { BreedDescriptionService } from '../breed-description.service';
 import { UserDataStoreService } from '../user-data-store.service';
+import { BreedDetailsCardComponent } from '../breed-details-card/breed-details-card.component';
 
 @Component({
   selector: 'app-breed-card',
@@ -24,7 +26,8 @@ export class BreedCardComponent implements OnInit {
     private fetchApiData: FetchApiDataService,
     public convertBreedData: BreedDescriptionService, // Public to be used in the template
     public userDataStore: UserDataStoreService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {
     this._subscription_UserFavoriteBreeds = this.userDataStore.userFavorites.subscribe(data => {
       this.userFavoriteBreeds = data.map((obj: any) => obj._id);
@@ -32,6 +35,21 @@ export class BreedCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  openBreedDetailsDialog(breed: any): void {
+    this.dialog.open(BreedDetailsCardComponent, {
+      width: '400px',
+      data: { breed: breed }
+    });
+  }
+
+  openApaClassDetailsDialog(): void {
+
+  }
+
+  openBreedPurposeDetailsDialog(): void {
+
   }
 
   addBreedToUserFavorites(breed: any): void {
