@@ -1,1 +1,6 @@
-<p>favorites-list-toggle works!</p>
+<button *ngIf="!isAFavorite" mat-icon-button (click)="addBreedToUserFavorites(breed)" aria-label="add this breed to your favorites">
+  <mat-icon>favorite_border</mat-icon>
+</button>
+<button *ngIf="isAFavorite" mat-icon-button (click)="removeBreedFromUserFavorites(breed)" aria-label="remove this breed to your favorites">
+  <mat-icon>favorite</mat-icon>
+</button>
