@@ -37,6 +37,8 @@ import { UserDataStoreService } from './user-data-store.service';
 import { UserDeleteAccountComponent } from './user-delete-account/user-delete-account.component';
 import { BreedDetailsCardComponent } from './breed-details-card/breed-details-card.component';
 import { FavoritesListToggleComponent } from './favorites-list-toggle/favorites-list-toggle.component';
+import { ApaClassComponent } from './apa-class/apa-class.component';
+import { BreedPurposeComponent } from './breed-purpose/breed-purpose.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { FavoritesListToggleComponent } from './favorites-list-toggle/favorites-
     AllBreedsComponent,
     UserDeleteAccountComponent,
     BreedDetailsCardComponent,
-    FavoritesListToggleComponent
+    FavoritesListToggleComponent,
+    ApaClassComponent,
+    BreedPurposeComponent
   ],
   imports: [
     BrowserModule,
