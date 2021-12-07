@@ -5,7 +5,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { BreedDescriptionService } from '../breed-description.service';
 import { UserDataStoreService } from '../user-data-store.service';
+
 import { BreedDetailsCardComponent } from '../breed-details-card/breed-details-card.component';
+import { ApaClassComponent } from '../apa-class/apa-class.component';
+import { BreedPurposeComponent } from '../breed-purpose/breed-purpose.component';
 
 @Component({
   selector: 'app-breed-card',
@@ -27,7 +30,7 @@ export class BreedCardComponent implements OnInit {
     public convertBreedData: BreedDescriptionService, // Public to be used in the template
     public userDataStore: UserDataStoreService,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) {
     this._subscription_UserFavoriteBreeds = this.userDataStore.userFavorites.subscribe(data => {
       this.userFavoriteBreeds = data.map((obj: any) => obj._id);
@@ -37,23 +40,49 @@ export class BreedCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * 
+   * @param breed 
+   * 
+   * Opens the dialog displaying more details about a single breed
+   */
   openBreedDetailsDialog(breed: any): void {
     this.dialog.open(BreedDetailsCardComponent, {
       width: '400px',
       data: {
         breed: breed,
-        openBreedPurposeDialog: this.openBreedPurposeDetailsDialog,
-        openApaClassDialog: this.openApaClassDetailsDialog
       }
     });
   }
 
+  /**
+   * 
+   * @param apaClass 
+   * 
+   * Opens the dialog displaying details about the APA Class
+   */
   openApaClassDetailsDialog(apaClass: string): void {
-    console.log('apa class dialog' + apaClass);
+    this.dialog.open(ApaClassComponent, {
+      width: '400px',
+      data: {
+        apaClass: apaClass
+      }
+    });
   }
 
+  /**
+   * 
+   * @param purpose
+   *  
+   * Opens the dialog displaying details the breeds purpose
+   */
   openBreedPurposeDetailsDialog(purpose: string): void {
-    console.log('purpose dialog' + purpose);
+    this.dialog.open(BreedPurposeComponent, {
+      width: '400px',
+      data: {
+        breedPurpose: purpose
+      },
+    });
   }
 
   addBreedToUserFavorites(breed: any): void {
@@ -90,5 +119,3 @@ export class BreedCardComponent implements OnInit {
   }
 
 }
-
-        // let favoritesArray = response.map((obj: any) => obj._id);

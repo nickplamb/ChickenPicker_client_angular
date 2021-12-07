@@ -12,7 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -80,6 +80,7 @@ import { BreedPurposeComponent } from './breed-purpose/breed-purpose.component';
     UserDataStoreService,
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}},
     {provide: MAT_DATE_LOCALE, useValue: 'en-US'},
+    {provide: MAT_DIALOG_DATA, useValue: {} }
   ],
   bootstrap: [AppComponent]
 })

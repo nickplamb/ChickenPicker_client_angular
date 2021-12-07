@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { BreedDescriptionService } from '../breed-description.service';
 
 @Component({
   selector: 'app-apa-class',
@@ -7,7 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApaClassComponent implements OnInit {
 
-  constructor() { }
+  apaClass: string;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any, 
+    public breedDescriptionService: BreedDescriptionService,
+  ) {
+    this.apaClass = data.apaClass;
+  }
 
   ngOnInit(): void {
   }

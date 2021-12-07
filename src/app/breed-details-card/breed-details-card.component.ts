@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { BreedDescriptionService } from '../breed-description.service';
@@ -11,20 +11,14 @@ import { BreedDescriptionService } from '../breed-description.service';
 export class BreedDetailsCardComponent implements OnInit {
 
   breed: any;
-  openBreedPurposeDialog: Function;
-  openApaClassDialog: Function;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public convertBreedData: BreedDescriptionService
+    public convertBreedData: BreedDescriptionService,
   ) {
     this.breed = data.breed;
-    this.openApaClassDialog = data.openApaClassDialog;
-    this.openBreedPurposeDialog = data.openBreedPurposeDialog;
    }
-
 
   ngOnInit(): void {
   }
-
 }

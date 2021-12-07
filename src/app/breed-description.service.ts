@@ -1,8 +1,13 @@
+import { TitleCasePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 
 // new type for class descriptions object
 // https://stackoverflow.com/questions/57086672/element-implicitly-has-an-any-type-because-expression-of-type-string-cant-b
 type tClassDescription = {
+  [key: string]: string
+}
+
+type tPurposeDescription = {
   [key: string]: string
 }
 
@@ -23,6 +28,17 @@ export class BreedDescriptionService {
     "Not Listed": "There are many breeds not listed in the American Poultry Association's Standards of Perfection."
   };
 
+  private purposeDescriptions: tPurposeDescription = {
+    "Eggs": "These breeds are used primarily for egg production. The egg layer is leaner and rangier in body type. It will lay more eggs, as a general rule.",
+    "Meat": "These breeds are used primarily for meat production. Meat birds have a blockier body that fills out with muscle for meat. It will lay fewer eggs, as a general rule.",
+    "Ornamental": "These breeds are primarily ornamental and do produce many eggs or much meat.",
+    // "Show": "These breeds are often shown in poultry competitions.",
+    "Exhibition": "These breeds are often shown in poultry competitions.",
+    "Feathers": "These breeds are prized for their particularly beautiful feathers.",
+    "Broody hens": "These breeds produce particularly good hens for brooding and raising chicks.",
+    "Dual-purpose": "The dual purpose chicken is intended to grow a good body, adequate for putting meat on the table, and lay a nice quantity of eggs. The dual purpose chicken will not provide as large a carcass as a meat bird, nor lay as many eggs as an egg layer."
+  };
+
   constructor() { }
 
   // converts the purposes string to a array and returns "Dual-purpose" if meat and eggs are in the array
@@ -40,11 +56,22 @@ export class BreedDescriptionService {
     return this.classDescriptions[apaClass];
   }
 
+  public getBreedPurposeDescription(purpose: string): any {
+    if (purpose === 'show') {
+      return this.purposeDescriptions['Exhibition']
+    }
+    return this.purposeDescriptions[this.capitalizeFirstLetter(purpose)]
+  }
+
   public addImageUrlToBreeds(breeds: any[]): any[] {
     breeds.forEach((breed: any) => {
       breed.imgUrl = `../../assets/breed_photos/${breed.breed.replace(/\s+/g, '').toLowerCase()}.jpg`;
     });
     return breeds;
+  }
+
+  private capitalizeFirstLetter(word: string): string {
+    return word[0].toUpperCase() + word.slice(1);
   }
 
 }

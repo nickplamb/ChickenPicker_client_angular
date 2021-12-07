@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { BreedDescriptionService } from '../breed-description.service';
 
 @Component({
   selector: 'app-breed-purpose',
@@ -7,7 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BreedPurposeComponent implements OnInit {
 
-  constructor() { }
+  breedPurpose: string;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public breedDescriptionService: BreedDescriptionService,
+  ) {
+    this.breedPurpose = data.breedPurpose;
+  }
 
   ngOnInit(): void {
   }

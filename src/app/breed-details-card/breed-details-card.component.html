@@ -13,13 +13,13 @@
         <p>
           <b>Purpose: </b>
           <ng-container *ngFor="let breedPurpose of convertBreedData.convertPurpose(breed.purpose); last as isLast">
-            <a (click)="openBreedPurposeDialog(breedPurpose)">{{breedPurpose}}</a>
+            {{breedPurpose | titlecase}}
             <ng-container *ngIf="!isLast">, </ng-container>
           </ng-container>
         </p>
       </ng-container>
       <p *ngIf="breed.apaClass">
-        <b>APA Class: </b><a (click)="openApaClassDialog(breed.apaClass.name)">{{breed.apaClass.name}}</a>
+        <b>APA Class: </b>{{breed.apaClass.name}}
       </p>
       <p *ngIf="breed.eggColor"><b>Egg Color: </b>{{breed.eggColor | titlecase}}</p>
       <p *ngIf="breed.eggSize"><b>Egg Size: </b>{{breed.eggSize | titlecase}}</p>

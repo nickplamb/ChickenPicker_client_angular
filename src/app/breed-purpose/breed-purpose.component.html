@@ -1,1 +1,14 @@
-<p>breed-purpose works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      {{breedPurpose | titlecase}} breeds
+    </mat-card-title>
+    <mat-card-subtitle>
+      Breed Purpose
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-dialog-content>
+    <p>Description:</p>
+    <p>{{breedDescriptionService.getBreedPurposeDescription(breedPurpose)}}</p>
+  </mat-dialog-content>
+</mat-card>
