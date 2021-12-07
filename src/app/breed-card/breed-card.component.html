@@ -22,14 +22,7 @@
       </p>
     </mat-dialog-content>
     <mat-card-actions>
-      <button *ngIf="!userFavoriteBreeds.includes(breed._id)" mat-icon-button (click)="addBreedToUserFavorites(breed)"
-        aria-label="add this breed to your favorites">
-        <mat-icon>favorite_border</mat-icon>
-      </button>
-      <button *ngIf="userFavoriteBreeds.includes(breed._id)" mat-icon-button (click)="removeBreedFromUserFavorites(breed)"
-        aria-label="remove this breed to your favorites">
-        <mat-icon>favorite</mat-icon>
-      </button>
+      <app-favorites-list-toggle breedId="{{breed._id}}" breedName="{{breed.breed}}"></app-favorites-list-toggle>
     </mat-card-actions>
   </mat-card>
 
