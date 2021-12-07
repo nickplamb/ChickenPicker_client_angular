@@ -28,7 +28,7 @@ export class FavoritesListToggleComponent implements OnInit {
     console.log(breed)
     this.fetchApiData.addToUserFavorites(breed._id).subscribe({
       next: response => {
-        console.log(response);
+        this.userDataStore.updateUserFavorites(response);
         this.snackBar.open(`${breed.breed} has been added to your favorites`, 'OK', {
           duration: 2000
         });
