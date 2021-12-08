@@ -1,8 +1,8 @@
-<button *ngIf="!userFavoriteBreedsIdsArray.includes(breedId)" mat-mini-fab color="primary" (click)="addBreedToUserFavorites(breedId, breedName)"
-  aria-label="add this breed to your favorites">
+<button *ngIf="!userFavoriteBreedsIdsArray.includes(breedId)" mat-button color="accent" (click)="addBreedToUserFavorites(breedId, breedName)"
+  aria-label="add this breed to your favorites" class="favorites-icon-button">
   <mat-icon>favorite_border</mat-icon>
 </button>
-<button *ngIf="userFavoriteBreedsIdsArray.includes(breedId)" mat-mini-fab color="accent" (click)="removeBreedFromUserFavorites(breedId, breedName)"
-  aria-label="remove this breed to your favorites">
+<button *ngIf="userFavoriteBreedsIdsArray.includes(breedId)" mat-button color="accent" (click)="removeBreedFromUserFavorites(breedId, breedName)"
+  aria-label="remove this breed to your favorites" class="favorites-icon-button">
   <mat-icon>favorite</mat-icon>
 </button>

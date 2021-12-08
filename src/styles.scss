@@ -36,7 +36,16 @@ $chickenPicker-Angular-client-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: rgb(166,120,66);
+}
+
+.main{
+  margin: 0 auto;
+  max-width: 90%;
+}
 
 .main-page {
   text-align: center;
@@ -44,5 +53,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 a {
-  text-decoration: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.mat-card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-card-title {
+  margin-left: -16px;
+  font-size: 25px;
+  padding-bottom: 5px;
+}
+
+.mat-dialog-container {
+  background-color: rgb(166,120,66);
 }

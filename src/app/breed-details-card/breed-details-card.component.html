@@ -2,6 +2,7 @@
   <mat-card class="card-container_item">
     <mat-card-header>
       <mat-card-title>{{ breed.breed }}</mat-card-title>
+      <app-favorites-list-toggle breedId="{{breed._id}}" breedName="{{breed.breed}}"></app-favorites-list-toggle>
     </mat-card-header>
     <img src={{breed.imgUrl}} onError="this.src='../../assets/breed_photos/frankie2.jpeg'" width="100%" alt="An image of a {{breed.breed}} chicken">
     <mat-dialog-content>
@@ -41,8 +42,5 @@
         <b>Temperament: </b>{{breed.temperament | titlecase}}
       </p>
     </mat-dialog-content>
-    <mat-card-actions>
-      <app-favorites-list-toggle breedId="{{breed._id}}" breedName="{{breed.breed}}"></app-favorites-list-toggle>
-    </mat-card-actions>
   </mat-card>
 </div>
