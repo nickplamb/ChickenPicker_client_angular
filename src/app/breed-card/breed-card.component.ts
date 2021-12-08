@@ -23,7 +23,7 @@ export class BreedCardComponent implements OnInit {
 
   @Input() breedsToDisplay:any[] = [];
 
-  backupImgUrl: string = '../../assets/breed_photos/frankie2.jpeg';
+  backupImgUrl: string = 'assets/breed_photos/frankie2.jpeg';
 
   constructor(
     public convertBreedData: BreedDescriptionService, // Public to be used in the template

@@ -12,6 +12,8 @@ export class BreedDetailsCardComponent implements OnInit {
 
   breed: any;
 
+  backupImgUrl: string = 'assets/breed_photos/frankie2.jpeg';
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public convertBreedData: BreedDescriptionService,

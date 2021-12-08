@@ -65,7 +65,7 @@ export class BreedDescriptionService {
 
   public addImageUrlToBreeds(breeds: any[]): any[] {
     breeds.forEach((breed: any) => {
-      breed.imgUrl = `../../assets/breed_photos/${breed.breed.replace(/\s+/g, '').toLowerCase()}.jpg`;
+      breed.imgUrl = `assets/breed_photos/${breed.breed.replace(/\s+/g, '').toLowerCase()}.jpg`;
     });
     return breeds;
   }
