@@ -39,12 +39,13 @@ html, body { height: 100%; }
 body { 
   margin: 0; 
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: rgb(166,120,66);
+  background-color: rgb(207,205,193);
 }
 
 .main{
   margin: 0 auto;
   max-width: 90%;
+  padding-top: 25px;
 }
 
 .main-page {
@@ -57,17 +58,112 @@ a {
   cursor: pointer;
 }
 
+h1 {
+  font-size: 30px;
+}
+
+/**
+* Navbar styles
+*/
+.app-title-link {
+  text-decoration: none;
+  color: black;
+
+
+  :visited {
+    color: black;
+    text-decoration: none;
+  }
+  :link {
+    text-decoration: none;
+  }
+
+  .app-title {
+    font-family: 'Pattaya', sans-serif;
+    font-size: 35px;
+    margin-top: 25px;
+    line-height: 5px;
+  }
+  .app-subtitle {
+    font-size: 14px;
+    font-weight: 200;
+  }
+}
+
+/**
+* Card styles
+*/
 .mat-card-header {
   display: flex;
   justify-content: space-between;
 }
 
+div.mat-card-header-text {
+  margin: 0;
+}
+
 .mat-card-title {
-  margin-left: -16px;
+  // margin-left: -16px;
   font-size: 25px;
   padding-bottom: 5px;
 }
 
+mat-card-subtitle.mat-card-subtitle{
+  margin-bottom: 5px;
+}
+
 .mat-dialog-container {
-  background-color: rgb(166,120,66);
+  background-color: rgb(207,205,193);
+  // background-color: rgb(166,120,66);
+}
+
+// Breed Details component styles
+.details-dialog-img {
+  margin-bottom: 10px;
+}
+
+/**
+* Profile styles
+*/
+.favorites-header {
+  h2{
+
+    font-size: 25px;
+  }
+
+}
+
+
+/**
+* Form styles
+*/
+form {
+  mat-form-field {
+    margin: 10px 0;
+    display: block;
+    width: 100%;
+  }
+}
+form.login-form, form.registration-form, form.profile-form {
+  // margin-left: 100px;
+  width: 100%;
+}
+
+mat-card.form-container {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 30px;
+
+  .mat-card-content {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+  
+    button {
+      width: 150px;
+      margin: 5px;
+    }
+  }
 }

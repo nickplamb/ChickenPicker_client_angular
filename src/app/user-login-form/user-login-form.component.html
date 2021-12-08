@@ -1,13 +1,15 @@
-<mat-card>
+<mat-card class="form-container">
   <mat-card-header>
-    <mat-card-title>Login!</mat-card-title>
+    <mat-card-title>Login</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form>
-      <mat-form-field>
+    <form class="login-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
         <input matInput [(ngModel)]="userCredentials.email" type="email" placeholder="Email" name="email" required>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
         <input matInput [(ngModel)]="userCredentials.password" type="password" placeholder="Password" name="password" required>
       </mat-form-field>
     </form>
