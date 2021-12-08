@@ -19,6 +19,7 @@
         <b>APA Class: </b><a (click)="openApaClassDetailsDialog(breed.apaClass.name)">{{breed.apaClass.name}}</a>
       </p>
     </mat-dialog-content>
-    <img src={{breed.imgUrl}} onError="this.src='assets/breed_photos/frankie2.jpeg'" width="100%" alt="An image of a {{breed.breed}} chicken">
+    <img src={{breed.imgUrl}} onError="this.onerror=null;this.src='assets/breed_photos/frankie2.jpeg'" width="100%"
+      alt="An image of a {{breed.breed}} chicken">
   </mat-card>
 </div>
