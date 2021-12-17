@@ -1,3 +1,7 @@
+/**
+ * @module
+ * User Login Form Component
+ */
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -16,6 +20,9 @@ import { tUserData } from '../user-profile/user-profile.component';
 })
 export class UserLoginFormComponent implements OnInit {
 
+  /**
+   * Inputs from login form
+   */
   @Input() userCredentials = { email: '', password: '' };
 
   constructor(
@@ -29,6 +36,10 @@ export class UserLoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Sends login credentials to API.
+   * Uses response to update items in localStorage and update {@link UserDataStoreService.userData}, then navigates to /breeds.
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userCredentials).subscribe({ 
       next: response => {

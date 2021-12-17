@@ -1,3 +1,7 @@
+/**
+ * @module
+ * App Routing Module
+ */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -5,6 +9,9 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { AllBreedsComponent } from './all-breeds/all-breeds.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
+/**
+ * @const routes App Routes Array
+ */
 const routes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'breeds', component: AllBreedsComponent },

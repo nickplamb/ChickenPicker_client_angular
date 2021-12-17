@@ -31,7 +31,9 @@
     "strictTemplates": true,
   },
   "typedocOptions": {
-    "entryPoints": ["src/index.html"],
-    "out": "docs"
+    "entryPoints": ["src/"],
+    "entryPointStrategy": "expand",
+    "out": "docs",
+    "exclude": "**/*.spec.ts"
   }
 }

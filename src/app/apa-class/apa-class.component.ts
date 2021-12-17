@@ -1,3 +1,7 @@
+/**
+ * @module
+ * Apa Class Component
+ */
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -8,8 +12,15 @@ import { BreedDescriptionService } from '../breed-description.service';
   templateUrl: './apa-class.component.html',
   styleUrls: ['./apa-class.component.scss']
 })
+
+/**
+ * Renders a card in a dialog that gives details about an APA class
+ */
 export class ApaClassComponent implements OnInit {
 
+  /**
+   * The name of the APA class to give details about.
+   */
   apaClass: string;
 
   constructor(

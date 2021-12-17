@@ -1,3 +1,7 @@
+/**
+ * @module
+ * User Delete Account Component
+ */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -11,6 +15,10 @@ import { FetchApiDataService } from '../fetch-api-data.service';
   templateUrl: './user-delete-account.component.html',
   styleUrls: ['./user-delete-account.component.scss']
 })
+
+/**
+ * Component renders in a dialog from the {@link UserProfileComponent} to confirm that the user wants to delete their account.
+ */
 export class UserDeleteAccountComponent implements OnInit {
 
   constructor(
@@ -22,6 +30,9 @@ export class UserDeleteAccountComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Sends request to API to delete account then logs the user out.
+   */
   public deleteUserAccount(): void {
     this.fetchApiData.deleteUserAccount().subscribe({
       next: response => {

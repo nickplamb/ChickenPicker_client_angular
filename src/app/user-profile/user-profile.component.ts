@@ -1,3 +1,7 @@
+/**
+ * @module
+ * User Profile Component
+ */
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,6 +14,9 @@ import { UserDataStoreService } from '../user-data-store.service';
 
 import { UserDeleteAccountComponent } from '../user-delete-account/user-delete-account.component';
 
+/**
+ * @typedef tUserData - User data interface
+ */
 export interface tUserData {
   [index: string]: any;
   username?: string;
@@ -23,13 +30,26 @@ export interface tUserData {
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })
+
+/**
+ * UserProfileComponent holds the user update form and list of users favorite breeds displayed using {@link BreedCardComponent}.
+ */
 export class UserProfileComponent implements OnInit {
 
+  /** 
+   * Array of breed objects in users favorite breeds list. Populated by subscription to {@link UserDataStoreService.userFavorites}. 
+   */
   usersFavoriteBreeds: any[] = [];
+  /** 
+   * User data object. Populated by subscription to {@link UserDataStoreService.userData}. 
+   */
   currentUserData: tUserData = { };
   _subscription_UserFavoriteBreeds;
   _subscription_UserData;
 
+  /**
+   * Input from form in template
+   */
   @Input() userDataToUpdate: tUserData = { }
 
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
@@ -51,6 +71,10 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Sends new user data to API. 
+   * Uses response to update user data in local storage, update {@link UserDataStoreService.userData} and resets form input.
+   */
   public updateUserProfile(): void {
     this.fetchApiData.updateUserInfo(this.userDataToUpdate).subscribe({
       next: response => {
@@ -74,6 +98,9 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens dialog with {@link UserDeleteAccountComponent} to confirm deleting the users account.
+   */
   public deleteUserAccount(): void {
     this.dialog.open(UserDeleteAccountComponent, {
       width: '500px'

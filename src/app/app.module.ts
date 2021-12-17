@@ -1,3 +1,7 @@
+/**
+ * @module
+ * App Module
+ */
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -84,4 +88,5 @@ import { BreedPurposeComponent } from './breed-purpose/breed-purpose.component';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

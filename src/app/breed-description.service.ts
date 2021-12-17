@@ -1,12 +1,20 @@
-import { TitleCasePipe } from '@angular/common';
+/**
+ * @module
+ * Breed Description Service
+ */
 import { Injectable } from '@angular/core';
 
 // new type for class descriptions object
 // https://stackoverflow.com/questions/57086672/element-implicitly-has-an-any-type-because-expression-of-type-string-cant-b
+/**
+ * @typedef {object} tClassDescription - Creates a new type named 'tClassDescription'
+ */
 type tClassDescription = {
   [key: string]: string
 }
-
+/**
+ * @typedef {object} tPurposeDescription - Creates a new type named 'tPurposeDescription'
+ */
 type tPurposeDescription = {
   [key: string]: string
 }
@@ -15,9 +23,16 @@ type tPurposeDescription = {
   providedIn: 'root'
 })
 
-
+/**
+ * Provides descriptions for APA classes and breed purposes, adds image url to breed objects, and converts breed purposes to arrays.
+ */
 export class BreedDescriptionService {
 
+  /**
+   * Object containing the descriptions of each APA class
+   * @enum
+   * @type {tClassDescription}
+   */
   private classDescriptions: tClassDescription = {
     "American": "The American Class contains thirteen breeds which originated in Canada or the United States. All are heavy breeds, and most lay brown eggs; most are cold-hardy",
     "Asiatic": "These three breeds originate in China; they are large, feather legged, and lay brown eggs.",
@@ -28,6 +43,11 @@ export class BreedDescriptionService {
     "Not Listed": "There are many breeds not listed in the American Poultry Association's Standards of Perfection."
   };
 
+  /**
+   * Object containing the descriptions of each breed purpose
+   * @enum
+   * @type {tPurposeDescription}
+   */
   private purposeDescriptions: tPurposeDescription = {
     "Eggs": "These breeds are used primarily for egg production. The egg layer is leaner and rangier in body type. It will lay more eggs, as a general rule.",
     "Meat": "These breeds are used primarily for meat production. Meat birds have a blockier body that fills out with muscle for meat. It will lay fewer eggs, as a general rule.",
@@ -41,8 +61,12 @@ export class BreedDescriptionService {
 
   constructor() { }
 
-  // converts the purposes string to a array and returns "Dual-purpose" if meat and eggs are in the array
-  // otherwise it returns the array of original purposes.
+  /**
+   * converts the purposes string to a array and returns "Dual-purpose" if meat and eggs are in the array
+   * otherwise it returns the array of original purposes.
+   * @param purposes a breed purpose
+   * @returns The original purposes as array or "Duel-purpose" if "meat" and "eggs" are both purposes of the breed 
+   */
   public convertPurpose(purposes: string): string[]{
     const purposeArray: string[] = purposes.split(', ');
     const isDualPurpose =  (purposeArray: string[]) => {
@@ -51,18 +75,33 @@ export class BreedDescriptionService {
     return isDualPurpose(purposeArray) ? ["Dual-purpose"] : purposeArray
   }
 
-  // Returns the description of each APA class.
-  public getApaClassDescription(apaClass: string): any {
+  /**
+   * Returns the description of each APA class.
+   * @param apaClass the name of an APA class
+   * @returns description of specified APA class
+   */
+  public getApaClassDescription(apaClass: string): string {
     return this.classDescriptions[apaClass];
   }
 
-  public getBreedPurposeDescription(purpose: string): any {
+  /**
+   * Returns the description of the breed purpose. 
+   * If the purpose is show, then return description of 'Exhibition'. These are equivalent.
+   * @param purpose the purpose of a breed
+   * @returns description of specified purpose
+   */
+  public getBreedPurposeDescription(purpose: string): string {
     if (purpose === 'show') {
       return this.purposeDescriptions['Exhibition']
     }
     return this.purposeDescriptions[this.capitalizeFirstLetter(purpose)]
   }
 
+  /**
+   * Adds the imgUrl property with path to each breeds image.
+   * @param breeds an array of breed objects
+   * @returns the original array with an imgUrl property added to each object
+   */
   public addImageUrlToBreeds(breeds: any[]): any[] {
     breeds.forEach((breed: any) => {
       breed.imgUrl = `assets/breed_photos/${breed.breed.replace(/\s+/g, '').toLowerCase()}.jpg`;
@@ -70,6 +109,11 @@ export class BreedDescriptionService {
     return breeds;
   }
 
+  /**
+   * Capitalizes the first letter of a string.
+   * @param word a word/string
+   * @returns a word with the first letter capitalized
+   */
   private capitalizeFirstLetter(word: string): string {
     return word[0].toUpperCase() + word.slice(1);
   }

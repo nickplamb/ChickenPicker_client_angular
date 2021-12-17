@@ -1,9 +1,11 @@
+/**
+ * @module
+ * Favorites List Toggle Component
+ */
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-/**
- * Services
- */
+// Services
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { UserDataStoreService } from '../user-data-store.service';
 
@@ -12,11 +14,24 @@ import { UserDataStoreService } from '../user-data-store.service';
   templateUrl: './favorites-list-toggle.component.html',
   styleUrls: ['./favorites-list-toggle.component.scss']
 })
+
+/**
+ * Renders a small star both indicating whether or not the breed is in the users favorites list and allows the user to add or remove the breed from their favorites list.
+ */
 export class FavoritesListToggleComponent implements OnInit {
 
+  /**
+   * ID of the breed in parent component
+   */
   @Input() breedId: string;
+  /**
+   * Breed name of the breed in parent component
+   */
   @Input() breedName: string;
 
+  /** 
+   * Array of IDs from breeds in users favorite breeds list. Populated by subscription to {@link UserDataStoreService.userFavorites}. 
+   */
   userFavoriteBreedsIdsArray: any[] = [];
 
   _subscription_UserFavoriteBreeds;
@@ -35,11 +50,9 @@ export class FavoritesListToggleComponent implements OnInit {
   }
 
   /**
-   * 
-   * @param breedId 
-   * @param breedName 
-   * 
-   * Sends Post request to API with breed ID as URL parameter to add the breed to the users favorites list.
+   * Sends request to add the breed to the users favorites list.
+   * @param breedId ID of the breed to be added to users favorites list
+   * @param breedName name of the breed to be added to users favorites list
    */
   addBreedToUserFavorites(breedId: string, breedName: string): void {
     this.fetchApiData.addToUserFavorites(breedId).subscribe({
@@ -58,11 +71,9 @@ export class FavoritesListToggleComponent implements OnInit {
   }
 
   /**
-   * 
-   * @param breedId 
-   * @param breedName 
-   * 
-   * Send Delete request to API with breed ID as URL parameter to remove the breed from the users favorites list.
+   * Sends request to remove the breed from the users favorites list.
+   * @param breedId ID of the breed to be removed from users favorites list
+   * @param breedName name of the breed to be removed from the users favorites list
    */
   removeBreedFromUserFavorites(breedId: string, breedName: string): void {
     this.fetchApiData.removeFromUserFavorites(breedId).subscribe({
