@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "docs": "rm -fr doc && typedoc",
-    "deploy": "ng deploy --base-href=/ChickenPicker_client_angular/"
+    "deploy": "ng deploy --base-href=/chicken_picker_angular_client/"
   },
   "private": true,
   "dependencies": {
