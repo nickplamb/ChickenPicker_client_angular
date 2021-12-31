@@ -4,7 +4,7 @@
       <mat-card-title>{{ breed.breed }}</mat-card-title>
       <app-favorites-list-toggle breedId="{{breed._id}}" breedName="{{breed.breed}}"></app-favorites-list-toggle>
     </mat-card-header>
-    <img src={{breed.imgUrl}} onerror="this.onerror=null;this.src='assets/breed_photos/frankie2.jpeg'" class="details-dialog-img" width="100%"
+    <img src={{breed.imgUrl}} onerror="this.onerror=null;this.src='assets/missing_image.jpg'" class="details-dialog-img" width="100%"
       alt="An image of a {{breed.breed}} chicken">
     <mat-dialog-content>
       <p *ngIf="breed.description"><b>Description:</b> {{breed.description}}</p>
